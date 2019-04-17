@@ -185,12 +185,12 @@ export class BillingFormcomponent {
       firstName: ['', [ Validators.required ]],
       lastName: ['', [ Validators.required ]],
       eMail: ['', [ Validators.required, Validators.email ]],
-      mobile: ['', [ Validators.required ]],
+      mobile: ['', [ Validators.required, Validators.maxLength(10) ] ],
       address1: ['', [ Validators.required ]],
       address2: ['', [ Validators.required ]],
       state: ['', [ Validators.required ]],
       city: ['', [ Validators.required ]],
-      pin: ['', [ BillingFormValidation.required ]],
+      pin: ['', [ Validators.required, Validators.minLength(6) ] ],
       paymentType: ['', [ Validators.required ]]
     });
   }
