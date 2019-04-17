@@ -189,7 +189,7 @@ export class BillingFormcomponent {
       address2: ['', [ Validators.required ]],
       state: ['', [ Validators.required ]],
       city: ['', [ Validators.required ]],
-      pin: ['', [ BillingFormValidation.required ]],
+      pin: ['', [ BillingFormValidation.required, BillingFormValidation.minLength(6) ]],
       paymentType: ['', [ Validators.required ]]
     });
   }
