@@ -184,12 +184,12 @@ export class BillingFormcomponent {
       firstName: ['', [ Validators.required ]],
       lastName: ['', [ Validators.required ]],
       eMail: ['', [ Validators.required, Validators.email ]],
-      mobile: ['', [ Validators.required, Validators.minLength(10) ] ],
+      mobile: ['', [ Validators.required, BillingFormValidation.minLength(10) ] ],
       address1: ['', [ Validators.required ]],
       address2: ['', [ Validators.required ]],
       state: ['', [ Validators.required ]],
       city: ['', [ Validators.required ]],
-      pin: ['', [ Validators.required, Validators.minLength(6) ] ],
+      pin: ['', [ Validators.required, BillingFormValidation.minLength(6) ] ],
       paymentType: ['', [ Validators.required ]]
     });
   }
