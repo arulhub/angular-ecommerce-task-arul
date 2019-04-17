@@ -10,10 +10,8 @@ import { SearchPipe } from './pipes/search.pipe';
 import { BrowserStorageServices } from './services/storage.service';
 import { CartServices } from './services/cart.service';
 
-import { BillingFormValidation } from './validation/billing.validation';
-
 export const dirDeclarations = [
-  NavBarComponent, ProductsListDirectory, SearchComponent, SortComponent, SearchPipe, CartComponent, BillingFormcomponent, BillingFormValidation
+  NavBarComponent, ProductsListDirectory, SearchComponent, SortComponent, SearchPipe, CartComponent, BillingFormcomponent
 ];
 
 export const services = [

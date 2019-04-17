@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
-import { BillingFormValidation } from './../validation/billing.validation';
-
 @Component({
-  selector : 'billing-form',
-  template : `
+  selector: 'billing-form',
+  template: `
     <div class="card">
       <div class="card-header">
         <h5>Billing Information</h5>
@@ -48,13 +46,13 @@ import { BillingFormValidation } from './../validation/billing.validation';
             <div class="form-group col-md-6">
               <label for="mobile">Mobile</label>
               <input 
-                type="number" 
-                id="mobile" 
-                class="form-control" 
-                placeholder="1234567890"
-                formControlName="mobile"
+                 type="number" 
+                 id="mobile" 
+                 class="form-control" 
+                 placeholder="1234567890"
+                 formControlName="mobile"
               />
-            </div>            
+            </div> 
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
@@ -98,7 +96,7 @@ import { BillingFormValidation } from './../validation/billing.validation';
                 placeholder="City"
                 formControlName="city"
               />
-            </div>
+            </div>          
             <div class="form-group col-md-4">
               <label for="pin">Pin code</label>
               <input 
@@ -108,7 +106,7 @@ import { BillingFormValidation } from './../validation/billing.validation';
                 placeholder="123456"
                 formControlName="pin"
               />
-            </div>            
+            </div>                      
           </div>
           <fieldset class="form-group">
             <div class="row">
@@ -170,26 +168,27 @@ import { BillingFormValidation } from './../validation/billing.validation';
   `
 })
 
-export class BillingFormcomponent{
-  billingForm : any;
+export class BillingFormcomponent {
+  billingForm: any;
+
   constructor(
-    public fb : FormBuilder
-  ){}
-  ngOnInit(){
+    public fb: FormBuilder
+  ) { }
+  ngOnInit() {
     this.loadForm();
   }
-  loadForm(){
+  loadForm() {
     this.billingForm = this.fb.group({
-      firstName : ['', [ Validators.required ] ],
-      lastName : [ '', [ Validators.required ] ],
-      eMail : [ '', [ Validators.required, Validators.email ] ],
-      mobile : [ '', [ BillingFormValidation.mobileNumber() ] ],
-      address1 : [ '', [ Validators.required ] ],
-      address2 : [ '', [ Validators.required ] ],
-      state : [ '', [ Validators.required ] ],
-      city : [ '', [ Validators.required ] ],
-      pin : [ '', [ Validators.required ] ],
-      paymentType : [ '', [ Validators.required ] ]
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      eMail: ['', [Validators.required, Validators.email]],
+      mobile: ['', [Validators.required, Validators.minLength(10)]],
+      address1: ['', [Validators.required]],
+      address2: ['', [Validators.required]],
+      state: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      pin: ['', [Validators.required, Validators.minLength(6)]],
+      paymentType: ['', [Validators.required]]
     });
   }
 }
