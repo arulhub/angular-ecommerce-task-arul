@@ -81,8 +81,7 @@ import { BillingFormValidation } from './../validation/billing.validation';
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="state">State</label>
-              <select class="form-control" id="state" formControlName="state">
-                <option selected>Choose</option>
+              <select class="form-control" id="state" formControlName="state">                
                 <option value="tn">Tamil Nadu</option>
                 <option value="kl">Kerala</option>
                 <option value="ka">Karnataka</option>
@@ -156,7 +155,7 @@ import { BillingFormValidation } from './../validation/billing.validation';
           </fieldset>
           <div class="row">
             <div class="col-sm-6">
-              <button class="btn btn-outline-primary float-left" (disabled)="!billingForm.valid">Place Order</button>
+              <button class="btn btn-outline-primary float-left" [disabled]="!billingForm.valid">Place Order</button>
             </div>
             <div class="col-sm-6">
               <button class="btn btn-outline-info float-right">Continue Shopping</button>
@@ -167,6 +166,8 @@ import { BillingFormValidation } from './../validation/billing.validation';
     </div>
     <hr>
     {{billingForm.value|json}}
+    <hr>
+    Status = {{billingForm.valid}}
   `
 })
 
@@ -184,12 +185,12 @@ export class BillingFormcomponent {
       firstName: ['', [ Validators.required ]],
       lastName: ['', [ Validators.required ]],
       eMail: ['', [ Validators.required, Validators.email ]],
-      mobile: ['', [ BillingFormValidation.required, BillingFormValidation.minLength(10) ]],
+      mobile: ['', [ Validators.required ]],
       address1: ['', [ Validators.required ]],
       address2: ['', [ Validators.required ]],
       state: ['', [ Validators.required ]],
       city: ['', [ Validators.required ]],
-      pin: ['', [ BillingFormValidation.required, BillingFormValidation.minLength(6) ]],
+      pin: ['', [ BillingFormValidation.required ]],
       paymentType: ['', [ Validators.required ]]
     });
   }
