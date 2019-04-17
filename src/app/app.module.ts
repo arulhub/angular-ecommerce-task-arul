@@ -9,7 +9,7 @@ import { RouterConfig,RouterDeclaration  } from './router.config';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, ReactiveFormsModule, RouterConfig ],
-  declarations: [ AppComponent, dirDeclarations, RouterDeclaration ],
+  declarations: [ AppComponent, dirDeclarations, RouterDeclaration  ],
   providers : [ services ],
   bootstrap:    [ AppComponent ]
 })

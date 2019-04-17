@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
+import { BillingFormValidation } from './../validation/billing.validation';
+
 @Component({
   selector: 'billing-form',
   template: `
@@ -179,16 +181,16 @@ export class BillingFormcomponent {
   }
   loadForm() {
     this.billingForm = this.fb.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      eMail: ['', [Validators.required, Validators.email]],
-      mobile: ['', [Validators.required, Validators.minLength(10)]],
-      address1: ['', [Validators.required]],
-      address2: ['', [Validators.required]],
-      state: ['', [Validators.required]],
-      city: ['', [Validators.required]],
-      pin: ['', [Validators.required, Validators.minLength(6)]],
-      paymentType: ['', [Validators.required]]
+      firstName: ['', [ Validators.required ]],
+      lastName: ['', [ Validators.required ]],
+      eMail: ['', [ Validators.required, Validators.email ]],
+      mobile: ['', [ BillingFormValidation.required, BillingFormValidation.minLength(10) ]],
+      address1: ['', [ Validators.required ]],
+      address2: ['', [ Validators.required ]],
+      state: ['', [ Validators.required ]],
+      city: ['', [ Validators.required ]],
+      pin: ['', [ BillingFormValidation.required ]],
+      paymentType: ['', [ Validators.required ]]
     });
   }
 }
