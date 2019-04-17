@@ -9,37 +9,77 @@ import { FormBuilder, Validator } from '@angular/forms';
         <h5>Billing Information</h5>
       </div>
       <div class="card-body">
-        <form>
+        <form [formGroup]="billingForm">
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="firstName">First Name</label>
-              <input type="text" id="firstName" class="form-control" placeholder="First Name" />
+              <input 
+                type="text" 
+                id="firstName" 
+                class="form-control" 
+                placeholder="First Name" 
+                formControlName="firstName"
+              />
             </div>
             <div class="form-group col-md-6">
               <label for="lastName">Last Name</label>
-              <input type="text" id="lastName" class="form-control" placeholder="Last Name"/>
+              <input 
+                type="text" 
+                id="lastName" 
+                class="form-control" 
+                placeholder="Last Name"
+                formControlName="lastName"
+              />
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="eMail">E-Mail</label>
-              <input type="text" id="eMail" class="form-control" placeholder="mailid@domain.com" />
+              <input 
+                type="text" 
+                id="eMail" 
+                class="form-control" 
+                placeholder="mailid@domain.com" 
+                formControlName="eMail"
+              />
             </div>
             <div class="form-group col-md-6">
               <label for="mobile">Mobile</label>
-              <input type="number" id="mobile" class="form-control" placeholder="1234567890"/>
+              <input 
+                type="number" 
+                id="mobile" 
+                class="form-control" 
+                placeholder="1234567890"
+                formControlName="mobile"
+              />
             </div>            
           </div>
           <div class="form-row">
-            <div class="form-group col-md-12">
-              <label for="address">Address</label>
-              <input type="text" id="address" class="form-control" placeholder="Address" />
-            </div>                      
+            <div class="form-group col-md-6">
+              <label for="address">Address1</label>
+              <input 
+                type="text" 
+                id="address1" 
+                class="form-control" 
+                placeholder="Address" 
+                formControlName="address1"
+              />
+            </div>                                
+            <div class="form-group col-md-6">
+              <label for="address">Address2</label>
+              <input 
+                type="text" 
+                id="address2" 
+                class="form-control" 
+                placeholder="Address" 
+                formControlName="address2"
+              />
+            </div>                     
           </div>
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="state">State</label>
-              <select class="form-control" id="state">
+              <select class="form-control" id="state" formControlName="state">
                 <option selected>Choose</option>
                 <option value="tn">Tamil Nadu</option>
                 <option value="kl">Kerala</option>
@@ -49,11 +89,23 @@ import { FormBuilder, Validator } from '@angular/forms';
             </div>
             <div class="form-group col-md-4">
               <label for="city">City</label>
-              <input type="text" id="city" class="form-control" placeholder="City"/>
+              <input 
+                type="text" 
+                id="city" 
+                class="form-control" 
+                placeholder="City"
+                formControlName="city"
+              />
             </div>
             <div class="form-group col-md-4">
               <label for="pin">Pin code</label>
-              <input type="number" id="pin" class="form-control" placeholder="123456"/>
+              <input 
+                type="number" 
+                id="pin" 
+                class="form-control" 
+                placeholder="123456"
+                formControlName="pin"
+              />
             </div>            
           </div>
           <fieldset class="form-group">
@@ -61,19 +113,40 @@ import { FormBuilder, Validator } from '@angular/forms';
               <legend class="col-form-label col-sm-3 pt-0">Payment Type</legend>
               <div class="col-sm-2">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" id="r3" name="paymentType" value="upi" />
+                  <input 
+                    class="form-check-input" 
+                    type="radio" 
+                    id="r3" 
+                    name="paymentType" 
+                    value="upi" 
+                    formControlName="paymentType"
+                  />
                   <label class="form-check-label" for="r3">UPI</label>
                 </div>
               </div>
               <div class="col-sm-3">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" id="r1" name="paymentType" value="netbanking" />
+                  <input 
+                    class="form-check-input" 
+                    type="radio" 
+                    id="r1" 
+                    name="paymentType" 
+                    value="netbanking" 
+                    formControlName="paymentType"
+                  />
                   <label class="form-check-label" for="r1">NetBanking</label>
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" id="r2" name="paymentType" value="card" />
+                  <input 
+                    class="form-check-input" 
+                    type="radio" 
+                    id="r2" 
+                    name="paymentType" 
+                    value="card" 
+                    formControlName="paymentType"
+                  />
                   <label class="form-check-label" for="r2">Credit/Debit Card</label>
                 </div>
               </div>              
