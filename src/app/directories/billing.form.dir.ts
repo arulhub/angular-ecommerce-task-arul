@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validator } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+
+import { BillingFormValidation } from './../validation/billing.validation';
 
 @Component({
   selector : 'billing-form',
@@ -154,7 +156,7 @@ import { FormBuilder, Validator } from '@angular/forms';
           </fieldset>
           <div class="row">
             <div class="col-sm-6">
-              <button class="btn btn-outline-primary float-left">Place Order</button>
+              <button class="btn btn-outline-primary float-left" (disabled)="!billingForm.valid">Place Order</button>
             </div>
             <div class="col-sm-6">
               <button class="btn btn-outline-info float-right">Continue Shopping</button>
@@ -163,6 +165,8 @@ import { FormBuilder, Validator } from '@angular/forms';
         </form>
       </div>
     </div>
+    <hr>
+    {{billingForm.value|json}}
   `
 })
 
@@ -175,6 +179,17 @@ export class BillingFormcomponent{
     this.loadForm();
   }
   loadForm(){
-    this.billingForm = this.fb.group({});
+    this.billingForm = this.fb.group({
+      firstName : ['', [ Validators.required ] ],
+      lastName : [ '', [ Validators.required ] ],
+      eMail : [ '', [ Validators.required, Validators.email ] ],
+      mobile : [ '', [ BillingFormValidation.mobileNumber() ] ],
+      address1 : [ '', [ Validators.required ] ],
+      address2 : [ '', [ Validators.required ] ],
+      state : [ '', [ Validators.required ] ],
+      city : [ '', [ Validators.required ] ],
+      pin : [ '', [ Validators.required ] ],
+      paymentType : [ '', [ Validators.required ] ]
+    });
   }
 }
