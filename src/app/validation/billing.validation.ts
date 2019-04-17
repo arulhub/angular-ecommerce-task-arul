@@ -16,8 +16,7 @@ export class BillingFormValidation{
   }
   static minLength(length:number){
     return function(control:AbstractControl):{[key:string]:boolean}|null{      
-      if(control.value.toString().length == length){
-        console.log('Inside if length')
+      if(control.value.toString().length != length){        
         return {
           'minLength':true
         }

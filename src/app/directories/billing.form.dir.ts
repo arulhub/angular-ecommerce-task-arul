@@ -167,13 +167,12 @@ import { BillingFormValidation } from './../validation/billing.validation';
     <hr>
     {{billingForm.value|json}}
     <hr>
-    Status = {{billingForm.valid}}
+    Status = {{billingForm.valid}}    
   `
 })
 
 export class BillingFormcomponent {
   billingForm: any;
-
   constructor(
     public fb: FormBuilder
   ) { }
@@ -185,7 +184,7 @@ export class BillingFormcomponent {
       firstName: ['', [ Validators.required ]],
       lastName: ['', [ Validators.required ]],
       eMail: ['', [ Validators.required, Validators.email ]],
-      mobile: ['', [ Validators.required, Validators.maxLength(10) ] ],
+      mobile: ['', [ Validators.required, Validators.minLength(10) ] ],
       address1: ['', [ Validators.required ]],
       address2: ['', [ Validators.required ]],
       state: ['', [ Validators.required ]],
