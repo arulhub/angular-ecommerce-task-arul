@@ -163,11 +163,7 @@ import { BillingFormValidation } from './../validation/billing.validation';
           </div>
         </form>
       </div>
-    </div>
-    <hr>
-    {{billingForm.value|json}}
-    <hr>
-    Status = {{billingForm.valid}}    
+    </div>        
   `
 })
 
