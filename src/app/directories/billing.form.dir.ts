@@ -22,6 +22,10 @@ import { BillingFormValidation } from './../validation/billing.validation';
                 placeholder="First Name" 
                 formControlName="firstName"
               />
+              <small
+                class="form-text text-danger"
+                *ngIf="billingForm.controls.firstName.status == 'INVALID' && (billingForm.controls.firstName.dirty || billingForm.controls.firstName.touched)"
+              >Test error message</small>
             </div>
             <div class="form-group col-md-6">
               <label for="lastName">Last Name</label>
@@ -164,7 +168,12 @@ import { BillingFormValidation } from './../validation/billing.validation';
         </form>
       </div>
     </div>        
-  `
+  `,
+  styles :[`
+    form .ng-invalid.ng-touched{
+      border-color : red;
+    }
+  `]
 })
 
 export class BillingFormcomponent {
