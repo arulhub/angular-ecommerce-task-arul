@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-
+import { BrowserStorageServices } from './../services/storage.service';
 import { BillingFormValidation } from './../validation/billing.validation';
 
 @Component({
@@ -11,7 +11,7 @@ import { BillingFormValidation } from './../validation/billing.validation';
         <h5>Billing Information</h5>
       </div>
       <div class="card-body">
-        <form [formGroup]="billingForm">
+        <form [formGroup]="billingForm" (ngSubmit)="send()">
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="firstName">First Name</label>
@@ -25,7 +25,7 @@ import { BillingFormValidation } from './../validation/billing.validation';
               <small
                 class="form-text text-danger"
                 *ngIf="billingForm.controls.firstName.status == 'INVALID' && (billingForm.controls.firstName.dirty || billingForm.controls.firstName.touched)"
-              >Test error message</small>
+              >Please enter a valid First Name</small>
             </div>
             <div class="form-group col-md-6">
               <label for="lastName">Last Name</label>
@@ -36,6 +36,10 @@ import { BillingFormValidation } from './../validation/billing.validation';
                 placeholder="Last Name"
                 formControlName="lastName"
               />
+              <small
+                class="form-text text-danger"
+                *ngIf="billingForm.controls.lastName.status == 'INVALID' && (billingForm.controls.lastName.dirty || billingForm.controls.lastName.touched)"
+              >Please enter a valid Last Name</small>
             </div>
           </div>
           <div class="form-row">
@@ -48,6 +52,10 @@ import { BillingFormValidation } from './../validation/billing.validation';
                 placeholder="mailid@domain.com" 
                 formControlName="eMail"
               />
+              <small
+                class="form-text text-danger"
+                *ngIf="billingForm.controls.eMail.status == 'INVALID' && (billingForm.controls.eMail.dirty || billingForm.controls.eMail.touched)"
+              >Please enter a valid eMail ID</small>
             </div>
             <div class="form-group col-md-6">
               <label for="mobile">Mobile</label>
@@ -58,6 +66,10 @@ import { BillingFormValidation } from './../validation/billing.validation';
                  placeholder="1234567890"
                  formControlName="mobile"
               />
+              <small
+                class="form-text text-danger"
+                *ngIf="billingForm.controls.mobile.status == 'INVALID' && (billingForm.controls.mobile.dirty || billingForm.controls.mobile.touched)"
+              >Please enter a valid Mobile number</small>
             </div> 
           </div>
           <div class="form-row">
@@ -70,6 +82,10 @@ import { BillingFormValidation } from './../validation/billing.validation';
                 placeholder="Address" 
                 formControlName="address1"
               />
+              <small
+                class="form-text text-danger"
+                *ngIf="billingForm.controls.address1.status == 'INVALID' && (billingForm.controls.address1.dirty || billingForm.controls.address1.touched)"
+              >Please enter a valid Address</small>
             </div>                                
             <div class="form-group col-md-6">
               <label for="address">Address2</label>
@@ -80,6 +96,10 @@ import { BillingFormValidation } from './../validation/billing.validation';
                 placeholder="Address" 
                 formControlName="address2"
               />
+              <small
+                class="form-text text-danger"
+                *ngIf="billingForm.controls.address2.status == 'INVALID' && (billingForm.controls.address2.dirty || billingForm.controls.address2.touched)"
+              >Please enter a valid Address</small>
             </div>                     
           </div>
           <div class="form-row">
@@ -91,6 +111,10 @@ import { BillingFormValidation } from './../validation/billing.validation';
                 <option value="ka">Karnataka</option>
                 <option value="ap">Andhra Pradesh</option>
               </select>
+              <small
+                class="form-text text-danger"
+                *ngIf="billingForm.controls.state.status == 'INVALID' && (billingForm.controls.state.dirty || billingForm.controls.state.touched)"
+              >Please enter a valid State</small>
             </div>
             <div class="form-group col-md-4">
               <label for="city">City</label>
@@ -101,6 +125,10 @@ import { BillingFormValidation } from './../validation/billing.validation';
                 placeholder="City"
                 formControlName="city"
               />
+              <small
+                class="form-text text-danger"
+                *ngIf="billingForm.controls.city.status == 'INVALID' && (billingForm.controls.city.dirty || billingForm.controls.city.touched)"
+              >Please enter a valid City</small>
             </div>          
             <div class="form-group col-md-4">
               <label for="pin">Pin code</label>
@@ -111,6 +139,10 @@ import { BillingFormValidation } from './../validation/billing.validation';
                 placeholder="123456"
                 formControlName="pin"
               />
+              <small
+                class="form-text text-danger"
+                *ngIf="billingForm.controls.pin.status == 'INVALID' && (billingForm.controls.pin.dirty || billingForm.controls.pin.touched)"
+              >Please enter a valid PinCode</small>
             </div>                      
           </div>
           <fieldset class="form-group">
@@ -154,7 +186,11 @@ import { BillingFormValidation } from './../validation/billing.validation';
                   />
                   <label class="form-check-label" for="r2">Credit/Debit Card</label>
                 </div>
-              </div>              
+              </div>
+              <small
+                class="form-text text-danger"
+                *ngIf="billingForm.controls.paymentType.status == 'INVALID' && (billingForm.controls.paymentType.dirty || billingForm.controls.paymentType.touched)"
+              >Please enter a valid Payment Type</small>              
             </div>
           </fieldset>
           <div class="row">
@@ -179,7 +215,8 @@ import { BillingFormValidation } from './../validation/billing.validation';
 export class BillingFormcomponent {
   billingForm: any;
   constructor(
-    public fb: FormBuilder
+    public fb: FormBuilder,
+    public services : BrowserStorageServices
   ) { }
   ngOnInit() {
     this.loadForm();
@@ -197,5 +234,10 @@ export class BillingFormcomponent {
       pin: ['', [ BillingFormValidation.required, BillingFormValidation.minLength(6) ] ],
       paymentType: ['', [ Validators.required ]]
     });
+  }
+  send(){
+    // console.log("Value = " , this.billingForm.value);
+    this.services.set({"billing":this.billingForm.value});
+
   }
 }
