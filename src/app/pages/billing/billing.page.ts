@@ -16,7 +16,7 @@ import { BrowserStorageServices } from './../../services/storage.service';
           <billing-form></billing-form>
         </div>
         <div class="col-md-4">
-        
+        <cart-app></cart-app>
         </div>
       </div>
     </div>      

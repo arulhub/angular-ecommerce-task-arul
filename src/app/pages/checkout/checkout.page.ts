@@ -9,6 +9,8 @@ import { Component } from '@angular/core';
           <navbar></navbar>
         </div>
       </div>
+      <br>
+      <checkout-dir></checkout-dir>
     </div>
   `
 })
