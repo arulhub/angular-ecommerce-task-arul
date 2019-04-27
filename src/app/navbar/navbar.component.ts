@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector : 'navbar',
@@ -20,7 +20,7 @@ import { Component } from '@angular/core';
             <a class="nav-link" routerLink = "/billing">Billing</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink = "/checkout">Checkout</a>
+            <a class="nav-link" routerLink = "/checkout" (click)="sendFlag()">Checkout</a>
           </li>
         </ul>
       </div>
@@ -29,5 +29,10 @@ import { Component } from '@angular/core';
 })
 
 export class NavBarComponent{
+  @Output() checkoutFlag : EventEmitter<boolean> = new EventEmitter;
 
+  sendFlag(){
+    this.checkoutFlag.emit(false);
+    setTimeout( ()=>{ this.checkoutFlag.emit(true) } );
+  }
 }

@@ -6,15 +6,19 @@ import { Component } from '@angular/core';
     <br>
       <div class="row">
         <div class="col-lg-12">
-          <navbar></navbar>
+          <navbar
+            (checkoutFlag)="checkoutFlag=$event"
+          ></navbar>
         </div>
       </div>
       <br>
-      <checkout-dir></checkout-dir>
+      <checkout-dir
+        *ngIf="checkoutFlag"
+      ></checkout-dir>
     </div>
   `
 })
 
 export class CheckoutPage{
-
+  public checkoutFlag : boolean = true;
 }
