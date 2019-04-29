@@ -6,8 +6,19 @@ import { BrowserStorageServices } from './../services/storage.service';
   template : `
     <div 
       class="row" 
-      *ngIf="true">
-      
+      *ngIf="true"
+    >
+      <div class="col-sm-12">        
+        <div class="alert alert-success" role="alert">
+          <h4 class="alert-heading">Dear FirstName LastName,</h4>
+          <p>Thank you for your order. Your order has been placed successfully and will be delivered in <strong>3 working days</strong>.</p>
+          <hr>
+          <p class="mb-0">
+            <button class="btn btn-primary btn-sm mx-1">Print Invoice</button>
+            <button class="btn btn-primary btn-sm mx-1">Place New Order</button>
+          </p>
+        </div>
+      </div>
     </div>    
   `
 })
