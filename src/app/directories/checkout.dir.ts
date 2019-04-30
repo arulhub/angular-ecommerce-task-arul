@@ -19,6 +19,9 @@ import { BrowserStorageServices } from './../services/storage.service';
           </p>
         </div>
       </div>
+      <div class="col-sm-12">
+        
+      </div>
     </div>    
   `
 })
