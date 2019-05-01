@@ -12,11 +12,11 @@ import { BrowserStorageServices } from './../../services/storage.service';
       </div>
       <br>
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-7">
           <billing-form></billing-form>
         </div>
-        <div class="col-md-4">
-        <cart-app></cart-app>
+        <div class="col-md-5">
+          <cart-app></cart-app>
         </div>
       </div>
     </div>      

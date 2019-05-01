@@ -16,6 +16,7 @@ import { CartServices } from './../services/cart.service';
             </div>                    
           </div>
           <div class="modal-body">
+          <div class="table-responsive-md">
             <table class="table">
               <thead>
                 <tr>
@@ -51,7 +52,7 @@ import { CartServices } from './../services/cart.service';
                   </div>
                 </tr>                
               </tbody>
-            </table>
+            </table></div>
             <div class="row">
               <button class="btn btn-outline-primary btn-sm m-auto" *ngIf="total > 0">
                 Checkout
