@@ -1,4 +1,4 @@
-export const companyModel = [
+export const companyModel = 
   {
     name : 'Shoppee Kart',
     address1 : '123, Anna Salai',
@@ -8,5 +8,4 @@ export const companyModel = [
     pin : '600001',
     mobile : '9871456320',
     mail : 'shoppee.kart@gmail.com'
-  }
-]
+  };

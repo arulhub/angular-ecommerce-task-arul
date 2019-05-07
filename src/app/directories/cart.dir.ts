@@ -16,10 +16,11 @@ import { CartServices } from './../services/cart.service';
             </div>                    
           </div>
           <div class="modal-body">
-          <div class="table-responsive-md">
+          <div class="table-responsive">
             <table class="table">
               <thead>
                 <tr>
+                  <th scope="col">#</th>
                   <th scope="col">Product</th>
                   <th scope="col">Price</th>
                   <th scope="col">Quantity</th>
@@ -28,7 +29,8 @@ import { CartServices } from './../services/cart.service';
               </thead>
               <tbody>
                 <tr scope = "row" *ngFor = "let item of cartDetails;let i = index">
-                  <div *ngIf="item.qty >= 1">  
+                  <div *ngIf="item.qty >= 1">
+                    <th scope="row">{{i+1}} </th>
                     <td>{{item.name}}</td>
                     <td>{{item.price}}</td>
                     <td>
