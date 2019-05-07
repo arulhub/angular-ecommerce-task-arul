@@ -8,7 +8,7 @@ import { companyModel } from './../model/company.model';
   template: `
     <div 
       class="row" 
-      *ngIf="true"
+      *ngIf="cartFlag && billingFlag"
     >
       <div class="col-sm-12">        
         <div class="alert alert-success" role="alert">
@@ -84,6 +84,9 @@ import { companyModel } from './../model/company.model';
               </div>
             </div>            
           </div>
+          <div class="card-footer text-muted">
+            <p class="text-right">Total: {{total}}</p>
+          </div>
         </div>
       </div>
     </div>    
@@ -92,6 +95,7 @@ import { companyModel } from './../model/company.model';
 
 export class CheckoutComponent {
   public company : any;
+  public total : number;
   public invoiceDate: any = new Date();
   public cart: any = {};
   public billingDetails: any = {};
@@ -107,6 +111,7 @@ export class CheckoutComponent {
   load() {
     this.cart = this.cartService.viewCart();
     this.billingDetails = this.browserService.get("billing");
+    this.total = this.cartService.findTotal();
     if (this.cart == undefined) {
       this.cart = {}
     }

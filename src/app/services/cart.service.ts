@@ -52,5 +52,12 @@ export class CartServices {
     }
     return tempArray;
   }
-  
+  findTotal(){
+    let cartItems = this.viewCart();
+    let total = 0;
+    for(let item of cartItems){     
+      total += (item.qty * item.price)
+    }
+    return total;
+  }
 }

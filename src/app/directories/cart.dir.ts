@@ -85,10 +85,10 @@ export class CartComponent {
     this.cartDetails = this.cartService.viewCart();    
   }
   findTotal(){
-    this.total = 0;
-    for(let item of this.cartDetails){     
-      this.total += (item.qty * item.price)
-    }
+    this.total = this.cartService.findTotal();
+    // for(let item of this.cartDetails){     
+    //   this.total += (item.qty * item.price)
+    // }
   }
   addProduct(pid,index){
     this.cartService.add(pid);

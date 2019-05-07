@@ -235,9 +235,7 @@ export class BillingFormcomponent {
       paymentType: ['', [ Validators.required ]]
     });
   }
-  send(){
-    // console.log("Value = " , this.billingForm.value);
+  send(){    
     this.services.set({"billing":this.billingForm.value});
-
   }
 }
