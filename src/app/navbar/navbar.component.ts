@@ -22,6 +22,9 @@ import { Component, Output, EventEmitter } from '@angular/core';
           <li class="nav-item">
             <a class="nav-link" routerLink = "/checkout" (click)="sendFlag()">Checkout</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink = "/login">Login</a>
+          </li>
         </ul>
       </div>
     </nav>
