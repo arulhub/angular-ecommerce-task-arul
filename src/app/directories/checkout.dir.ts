@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { BrowserStorageServices } from './../services/storage.service';
 
+import { companyModel } from './../model/company.model';
+
 @Component({
   selector: 'checkout-dir',
   template: `
@@ -36,12 +38,12 @@ import { BrowserStorageServices } from './../services/storage.service';
             <div class="row mt-4">
               <div class="col-sm-6">                
                   <div><span>From:</span></div>
-                  <div><strong>Shoppee Kart</strong></div>                
-                  <div><span>123, Anna Salai,</span></div>
-                  <div><span>Mount Road,</span></div>
-                  <div><span>Chennai - 600 001</span></div>
-                  <div><span>Mobile: +91-9876543210</span></div>
-                  <div><span>Mail: shoppee.kart@gmail.com</span></div>
+                  <div><strong>{{company.name}}</strong></div>                
+                  <div><span>{{company.address1}}</span></div>
+                  <div><span>{{company.address2}}</span></div>
+                  <div><span>{{company.city}} - {{company.pin}}</span></div>
+                  <div><span>Mobile:{{company.mobile}}</span></div>
+                  <div><span>Mail: {{company.mail}}</span></div>
               </div>
               <div class="col-sm-6">
                 <div><span>To:</span></div>
@@ -60,6 +62,7 @@ import { BrowserStorageServices } from './../services/storage.service';
 })
 
 export class CheckoutComponent {
+  public company = companyModel;
   public invoiceDate: any = new Date();
   public cart: any = {};
   public billingDetails: any = {};
