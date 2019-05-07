@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Router } from '@angular/router';
 import { CartServices } from './../services/cart.service';
 
 @Component({
@@ -56,7 +57,7 @@ import { CartServices } from './../services/cart.service';
               </tbody>
             </table></div>
             <div class="row">
-              <button class="btn btn-outline-primary btn-sm m-auto" *ngIf="total > 0">
+              <button class="btn btn-outline-primary btn-sm m-auto" *ngIf="total > 0" (click)="route()">
                 Checkout
               </button>
             </div>
@@ -75,7 +76,8 @@ export class CartComponent {
   public count : number = 0; 
   public total : number = 0;   
   constructor(
-    public cartService : CartServices
+    public cartService : CartServices,
+    public router : Router
   ){    
     this.load();
     this.count = Object.keys(this.cartDetails).length;
@@ -101,5 +103,8 @@ export class CartComponent {
     this.findTotal();
     this.cartDetails = this.cartService.viewCart();
     this.count = Object.keys(this.cartDetails).length;    
+  }
+  route(){
+    this.router.navigate(['/','billing']);
   }
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { BrowserStorageServices } from './../services/storage.service';
 import { BillingFormValidation } from './../validation/billing.validation';
 
@@ -198,7 +200,7 @@ import { BillingFormValidation } from './../validation/billing.validation';
               <button class="btn btn-outline-primary float-left" [disabled]="!billingForm.valid">Place Order</button>
             </div>
             <div class="col-sm-6">
-              <button class="btn btn-outline-info float-right">Continue Shopping</button>
+              <button class="btn btn-outline-info float-right" (click)="route()">Continue Shopping</button>
             </div>
           </div>
         </form>
@@ -216,7 +218,8 @@ export class BillingFormcomponent {
   billingForm: any;
   constructor(
     public fb: FormBuilder,
-    public services : BrowserStorageServices
+    public services : BrowserStorageServices,
+    public router : Router
   ) { }
   ngOnInit() {
     this.loadForm();
@@ -237,5 +240,9 @@ export class BillingFormcomponent {
   }
   send(){    
     this.services.set({"billing":this.billingForm.value});
+    this.router.navigateByUrl('/checkout');
+  }
+  route(){
+    this.router.navigateByUrl('/products');
   }
 }
