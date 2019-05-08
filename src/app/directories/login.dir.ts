@@ -17,6 +17,7 @@ import { Component } from '@angular/core';
       <input class="form-control" id="pass" placeholder="Password" type="password"/> 
     </div>
     <button class="btn btn-outline-info btn-lg btn-block">Login</button> 
+    <p class="mt-5 mb-3 text-muted text-center">Don't have an account? <a routerLink="/register">Sign-Up  here</a></p>
   </form>
   `,
   styleUrls : ['./login.dir.css']
