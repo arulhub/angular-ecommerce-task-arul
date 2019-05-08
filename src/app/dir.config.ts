@@ -5,6 +5,7 @@ import { SortComponent }  from './directories/sort.dir';
 import { CartComponent }  from './directories/cart.dir';
 import { BillingFormcomponent }  from './directories/billing.form.dir';
 import { CheckoutComponent }  from './directories/checkout.dir';
+import { LoginComponent } from './directories/login.dir';
 
 import { SearchPipe } from './pipes/search.pipe';
 
@@ -12,7 +13,7 @@ import { BrowserStorageServices } from './services/storage.service';
 import { CartServices } from './services/cart.service';
 
 export const dirDeclarations = [
-  NavBarComponent, ProductsListDirectory, SearchComponent, SortComponent, SearchPipe, CartComponent, BillingFormcomponent, CheckoutComponent
+  NavBarComponent, ProductsListDirectory, SearchComponent, SortComponent, SearchPipe, CartComponent, BillingFormcomponent, CheckoutComponent, LoginComponent
 ];
 
 export const services = [
