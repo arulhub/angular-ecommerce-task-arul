@@ -10,6 +10,7 @@ const appRoutes : Routes = [
   { path : 'billing', component : BillingPage },
   { path : 'checkout', component : CheckoutPage },
   { path : 'login', component : LoginPage },
+  // { path : 'register', component : RegisterPage },
   { path : '', redirectTo : '/products', pathMatch : 'full'}
 ]
 

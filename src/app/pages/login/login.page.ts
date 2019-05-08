@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   template : `
-  <div class="d-flex justify-content-center mt-5">
+  <div class="d-flex justify-content-center" style="margin-top:150px">
     <div class="card" style="width:50%">
       <div class="card-header">
         Login Page
