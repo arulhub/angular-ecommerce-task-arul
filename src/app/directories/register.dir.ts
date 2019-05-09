@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector : 'register-app',
@@ -8,12 +9,11 @@ import { Component } from '@angular/core';
         <h5>Register to Shoppee Kart</h5>
       </div>
       <div class="card-body">
-        <form>
+        <form [formGroup]="registerForm" (ngSubmit)="sendDetails()">
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="firstName">First Name</label>
               <input 
-                id="firstName"
                 class="form-control"
                 placeholder="First Name" 
                 formControlName="firstName"
@@ -23,7 +23,6 @@ import { Component } from '@angular/core';
             <div class="form-group col-md-6">
               <label for="lastName">Last Name</label>
               <input 
-                id="lastName"
                 class="form-control"
                 placeholder="Last Name" 
                 formControlName="lastName"
@@ -35,7 +34,6 @@ import { Component } from '@angular/core';
             <div class="form-group col-md-6">
               <label for="email">Email ID</label>
               <input 
-                id="email"
                 class="form-control"
                 placeholder="mail@domain.com" 
                 formControlName="email"
@@ -45,7 +43,6 @@ import { Component } from '@angular/core';
             <div class="form-group col-md-6">
               <label for="mobile">Mobile</label>
               <input 
-                id="mobile"
                 class="form-control"
                 placeholder="1234567890" 
                 formControlName="mobile"
@@ -57,7 +54,6 @@ import { Component } from '@angular/core';
             <div class="form-group col-md-6">
               <label for="userID">User ID</label>
               <input 
-                id="userID"
                 class="form-control"
                 placeholder="User ID" 
                 formControlName="userID"
@@ -67,7 +63,6 @@ import { Component } from '@angular/core';
             <div class="form-group col-md-6">
               <label for="city">City</label>
               <input 
-                id="city"
                 class="form-control"
                 placeholder="City" 
                 formControlName="city"
@@ -78,8 +73,7 @@ import { Component } from '@angular/core';
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="password">Password</label>
-              <input 
-                id="password"
+              <input                 
                 class="form-control"
                 placeholder="Password" 
                 formControlName="password"
@@ -88,14 +82,16 @@ import { Component } from '@angular/core';
             </div>
             <div class="form-group col-md-6">
               <label for="confirmPass">Confirm Password</label>
-              <input 
-                id="confirmPass"
+              <input                 
                 class="form-control"
                 placeholder="Confirm Password" 
                 formControlName="confirmPass"
                 type="password"
               />
             </div>
+          </div>
+          <div class="form-row">
+            <button class="btn btn-outline-info">Sign Up</button>
           </div>
         </form>
       </div>
@@ -107,5 +103,26 @@ import { Component } from '@angular/core';
 })
 
 export class RegisterComponent{
-
+  public registerForm : any;
+  constructor(
+    public fb : FormBuilder
+  ){  }
+  ngOnInit(){
+    this.loadForm();
+  }
+  loadForm(){
+    this.registerForm = this.fb.group({
+      firstName : [ '', [ Validators.required ] ],
+      lastName : [ '', [ Validators.required ] ],
+      email : [ '', [ Validators.required, Validators.email ] ],
+      mobile : [ '', [ Validators.required ] ],
+      userID : [ '', [ Validators.required ] ],
+      city : [ '', [ Validators.required ] ],
+      password : [ '', [ Validators.required ] ],
+      confirmPass : [ '', [ Validators.required ] ],
+    });
+  }
+  sendDetails(){
+    
+  }
 }

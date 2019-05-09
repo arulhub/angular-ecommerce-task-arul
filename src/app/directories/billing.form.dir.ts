@@ -205,7 +205,9 @@ import { BillingFormValidation } from './../validation/billing.validation';
           </div>
         </form>
       </div>
-    </div>        
+    </div>   
+    <hr>
+    {{billingForm.valid}}     
   `,
   styles :[`
     form .ng-invalid.ng-touched{
