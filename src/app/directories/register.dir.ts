@@ -53,6 +53,50 @@ import { Component } from '@angular/core';
               />
             </div>
           </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="userID">User ID</label>
+              <input 
+                id="userID"
+                class="form-control"
+                placeholder="User ID" 
+                formControlName="userID"
+                type="text"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="city">City</label>
+              <input 
+                id="city"
+                class="form-control"
+                placeholder="City" 
+                formControlName="city"
+                type="text"
+              />
+            </div>            
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="password">Password</label>
+              <input 
+                id="password"
+                class="form-control"
+                placeholder="Password" 
+                formControlName="password"
+                type="password"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="confirmPass">Confirm Password</label>
+              <input 
+                id="confirmPass"
+                class="form-control"
+                placeholder="Confirm Password" 
+                formControlName="confirmPass"
+                type="password"
+              />
+            </div>
+          </div>
         </form>
       </div>
     </div>
