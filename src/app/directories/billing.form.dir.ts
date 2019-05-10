@@ -18,8 +18,7 @@ import { BillingFormValidation } from './../validation/billing.validation';
             <div class="form-group col-md-6">
               <label for="firstName">First Name</label>
               <input 
-                type="text" 
-                id="firstName" 
+                type="text"                 
                 class="form-control" 
                 placeholder="First Name" 
                 formControlName="firstName"
@@ -32,8 +31,7 @@ import { BillingFormValidation } from './../validation/billing.validation';
             <div class="form-group col-md-6">
               <label for="lastName">Last Name</label>
               <input 
-                type="text" 
-                id="lastName" 
+                type="text"  
                 class="form-control" 
                 placeholder="Last Name"
                 formControlName="lastName"
@@ -49,7 +47,6 @@ import { BillingFormValidation } from './../validation/billing.validation';
               <label for="eMail">E-Mail</label>
               <input 
                 type="text" 
-                id="eMail" 
                 class="form-control" 
                 placeholder="mailid@domain.com" 
                 formControlName="eMail"
@@ -63,7 +60,6 @@ import { BillingFormValidation } from './../validation/billing.validation';
               <label for="mobile">Mobile</label>
               <input 
                  type="number" 
-                 id="mobile" 
                  class="form-control" 
                  placeholder="1234567890"
                  formControlName="mobile"
@@ -79,7 +75,6 @@ import { BillingFormValidation } from './../validation/billing.validation';
               <label for="address">Address1</label>
               <input 
                 type="text" 
-                id="address1" 
                 class="form-control" 
                 placeholder="Address" 
                 formControlName="address1"
@@ -92,8 +87,7 @@ import { BillingFormValidation } from './../validation/billing.validation';
             <div class="form-group col-md-6">
               <label for="address">Address2</label>
               <input 
-                type="text" 
-                id="address2" 
+                type="text"  
                 class="form-control" 
                 placeholder="Address" 
                 formControlName="address2"
@@ -122,7 +116,6 @@ import { BillingFormValidation } from './../validation/billing.validation';
               <label for="city">City</label>
               <input 
                 type="text" 
-                id="city" 
                 class="form-control" 
                 placeholder="City"
                 formControlName="city"
@@ -136,7 +129,6 @@ import { BillingFormValidation } from './../validation/billing.validation';
               <label for="pin">Pin code</label>
               <input 
                 type="number" 
-                id="pin" 
                 class="form-control" 
                 placeholder="123456"
                 formControlName="pin"
@@ -236,8 +228,8 @@ export class BillingFormcomponent {
       address2: ['', [ Validators.required ]],
       state: ['', [ Validators.required ]],
       city: ['', [ Validators.required ]],
-      pin: ['', [ BillingFormValidation.required, BillingFormValidation.minLength(6) ] ],
-      paymentType: ['', [ Validators.required ]]
+      pin: ['', [ Validators.required, BillingFormValidation.minLength(6) ] ],
+      paymentType: ['', [ Validators.required ] ]
     });
   }
   send(){    

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MyValidator } from './../validation/password.validation';
 
 @Component({
   selector : 'register-app',
@@ -18,7 +19,11 @@ import { FormBuilder, Validators } from '@angular/forms';
                 placeholder="First Name" 
                 formControlName="firstName"
                 type="text"
+                [ngClass] = "{ 'is-invalid' : registerForm.controls.firstName.status == 'INVALID' && (registerForm.controls.firstName.dirty || registerForm.controls.firstName.touched) }"
               />
+              <div class="invalid-feedback" *ngIf = "registerForm.controls.firstName.status == 'INVALID' && (registerForm.controls.firstName.dirty || registerForm.controls.firstName.touched)" >
+                <div *ngIf="f.firstName.errors.required">First Name is required</div>                
+              </div>             
             </div>
             <div class="form-group col-md-6">
               <label for="lastName">Last Name</label>
@@ -27,7 +32,11 @@ import { FormBuilder, Validators } from '@angular/forms';
                 placeholder="Last Name" 
                 formControlName="lastName"
                 type="text"
+                [ngClass] = "{ 'is-invalid' : registerForm.controls.lastName.status == 'INVALID' && (registerForm.controls.lastName.dirty || registerForm.controls.lastName.touched) }"
               />
+              <div class="invalid-feedback" *ngIf = "registerForm.controls.lastName.status == 'INVALID' && (registerForm.controls.lastName.dirty || registerForm.controls.lastName.touched)" >
+                <div *ngIf="f.lastName.errors.required">Last Name is required</div>                
+              </div>
             </div>
           </div>
           <div class="form-row">
@@ -38,7 +47,12 @@ import { FormBuilder, Validators } from '@angular/forms';
                 placeholder="mail@domain.com" 
                 formControlName="email"
                 type="text"
+                [ngClass] = "{ 'is-invalid' : registerForm.controls.email.status == 'INVALID' && (registerForm.controls.email.dirty || registerForm.controls.email.touched) }"
               />
+              <div class="invalid-feedback" *ngIf = "registerForm.controls.email.status == 'INVALID' && (registerForm.controls.email.dirty || registerForm.controls.email.touched)" >
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+              </div>
             </div>
             <div class="form-group col-md-6">
               <label for="mobile">Mobile</label>
@@ -47,7 +61,12 @@ import { FormBuilder, Validators } from '@angular/forms';
                 placeholder="1234567890" 
                 formControlName="mobile"
                 type="number"
+                [ngClass] = "{ 'is-invalid' : registerForm.controls.mobile.status == 'INVALID' && (registerForm.controls.mobile.dirty || registerForm.controls.mobile.touched) }"
               />
+              <div class="invalid-feedback" *ngIf = "registerForm.controls.mobile.status == 'INVALID' && (registerForm.controls.mobile.dirty || registerForm.controls.mobile.touched)" >
+                <div *ngIf="f.mobile.errors.required">Mobile number is required</div>
+                <div *ngIf="f.mobile.errors.minLength">Mobile number must be atleast 10 characters</div>
+              </div>
             </div>
           </div>
           <div class="form-row">
@@ -58,7 +77,12 @@ import { FormBuilder, Validators } from '@angular/forms';
                 placeholder="User ID" 
                 formControlName="userID"
                 type="text"
+                [ngClass] = "{ 'is-invalid' : registerForm.controls.userID.status == 'INVALID' && (registerForm.controls.userID.dirty || registerForm.controls.userID.touched) }"
               />
+              <div class="invalid-feedback" *ngIf = "registerForm.controls.userID.status == 'INVALID' && (registerForm.controls.userID.dirty || registerForm.controls.userID.touched)" >
+                <div *ngIf="f.userID.errors.required">User ID is required</div>
+                <div *ngIf="f.userID.errors.userIDVal">Mobile number must be atleast 10 characters</div>
+              </div>
             </div>
             <div class="form-group col-md-6">
               <label for="city">City</label>
@@ -70,6 +94,7 @@ import { FormBuilder, Validators } from '@angular/forms';
               />
             </div>            
           </div>
+          <div [formGroup]="passwordGroup">
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="password">Password</label>
@@ -90,12 +115,15 @@ import { FormBuilder, Validators } from '@angular/forms';
               />
             </div>
           </div>
+          </div>
           <div class="form-row">
             <button class="btn btn-outline-info">Sign Up</button>
           </div>
         </form>
       </div>
     </div>
+    <hr>
+    {{f.email.errors.required}}
   `,
   styles : [`
 
@@ -104,6 +132,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 export class RegisterComponent{
   public registerForm : any;
+  public passwordGroup : any;
   constructor(
     public fb : FormBuilder
   ){  }
@@ -111,6 +140,12 @@ export class RegisterComponent{
     this.loadForm();
   }
   loadForm(){
+    this.passwordGroup = this.fb.group({
+      password : [],
+      confirmPass : []
+    },{
+      validator : MyValidator.passwordMatch.bind(this)
+    })
     this.registerForm = this.fb.group({
       firstName : [ '', [ Validators.required ] ],
       lastName : [ '', [ Validators.required ] ],
@@ -118,11 +153,11 @@ export class RegisterComponent{
       mobile : [ '', [ Validators.required ] ],
       userID : [ '', [ Validators.required ] ],
       city : [ '', [ Validators.required ] ],
-      password : [ '', [ Validators.required ] ],
-      confirmPass : [ '', [ Validators.required ] ],
+      passwordGroup : this.passwordGroup      
     });
   }
+  get f() { return this.registerForm.controls; }
   sendDetails(){
-    
+    console.log(this.registerForm.value);
   }
 }

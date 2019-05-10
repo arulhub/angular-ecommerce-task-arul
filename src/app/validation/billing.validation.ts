@@ -7,11 +7,11 @@ export class BillingFormValidation{
       control.value != '' &&
       control.value != 0
     ){
-      return null
+      return null      
     }else{
       return {
         'required' : true
-      }
+      }      
     }
   }
   static minLength(length:number){
