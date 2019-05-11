@@ -106,7 +106,7 @@ import { MyValidator } from './../validation/password.validation';
                 placeholder="Password" 
                 formControlName="password"
                 type="password"
-                [ngClass] = "{ 'is-invalid' : registerForm.controls.city.status == 'INVALID' && (registerForm.controls.city.dirty || registerForm.controls.city.touched) }"
+                [ngClass] = "{ 'is-invalid' : registerForm.controls.password.status == 'INVALID' && (registerForm.controls.password.dirty || registerForm.controls.password.touched) }"
               />
               <div class="invalid-feedback" *ngIf = "registerForm.controls.password.status == 'INVALID' && (registerForm.controls.password.dirty || registerForm.controls.password.touched)" >
                 <div *ngIf="f.password.errors.required">Password is required</div>               
@@ -133,7 +133,7 @@ import { MyValidator } from './../validation/password.validation';
           </div>
         </form>
       </div>
-    </div>    
+    </div>       
   `,
   styles : [`
 
