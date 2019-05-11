@@ -129,7 +129,11 @@ import { MyValidator } from './../validation/password.validation';
               </div>
           </div>
           <div class="form-row">
-            <button class="btn btn-outline-info">Sign Up</button>
+            <button 
+              class="btn btn-outline-info"
+              (click)="sendDetails()"
+              [disabled]="!registerForm.valid"
+            >Sign Up</button>
           </div>
         </form>
       </div>
