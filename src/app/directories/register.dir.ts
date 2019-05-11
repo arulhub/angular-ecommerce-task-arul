@@ -91,10 +91,13 @@ import { MyValidator } from './../validation/password.validation';
                 placeholder="City" 
                 formControlName="city"
                 type="text"
+                [ngClass] = "{ 'is-invalid' : registerForm.controls.city.status == 'INVALID' && (registerForm.controls.city.dirty || registerForm.controls.city.touched) }"
               />
-            </div>            
+            </div>
+            <div class="invalid-feedback" *ngIf = "registerForm.controls.city.status == 'INVALID' && (registerForm.controls.city.dirty || registerForm.controls.city.touched)" >
+                <div *ngIf="f.city.errors.required">City is required</div>                
+              </div>           
           </div>
-          <div [formGroup]="passwordGroup">
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="password">Password</label>
@@ -103,7 +106,12 @@ import { MyValidator } from './../validation/password.validation';
                 placeholder="Password" 
                 formControlName="password"
                 type="password"
+                [ngClass] = "{ 'is-invalid' : registerForm.controls.city.status == 'INVALID' && (registerForm.controls.city.dirty || registerForm.controls.city.touched) }"
               />
+              <div class="invalid-feedback" *ngIf = "registerForm.controls.password.status == 'INVALID' && (registerForm.controls.password.dirty || registerForm.controls.password.touched)" >
+                <div *ngIf="f.password.errors.required">Password is required</div>               
+                <div *ngIf="f.password.errors.minLength">Password must be atleast 6 characters in length</div>
+              </div>
             </div>
             <div class="form-group col-md-6">
               <label for="confirmPass">Confirm Password</label>
@@ -112,18 +120,20 @@ import { MyValidator } from './../validation/password.validation';
                 placeholder="Confirm Password" 
                 formControlName="confirmPass"
                 type="password"
+                [ngClass] = "{ 'is-invalid' : registerForm.controls.confirmPass.status == 'INVALID' && (registerForm.controls.confirmPass.dirty || registerForm.controls.confirmPass.touched) }"
               />
             </div>
-          </div>
+            <div class="invalid-feedback" *ngIf = "registerForm.controls.confirmPass.status == 'INVALID' && (registerForm.controls.confirmPass.dirty || registerForm.controls.confirmPass.touched)" >
+                <div *ngIf="f.confirmPass.errors.required">Confirm password is required</div>               
+                <div *ngIf="f.confirmPass.errors.mustMatch">Passwords must match</div>
+              </div>
           </div>
           <div class="form-row">
             <button class="btn btn-outline-info">Sign Up</button>
           </div>
         </form>
       </div>
-    </div>
-    <hr>
-    {{f.email.errors.required}}
+    </div>    
   `,
   styles : [`
 
@@ -141,8 +151,7 @@ export class RegisterComponent{
   }
   loadForm(){
     this.passwordGroup = this.fb.group({
-      password : [],
-      confirmPass : []
+      
     },{
       validator : MyValidator.passwordMatch.bind(this)
     })
@@ -153,7 +162,10 @@ export class RegisterComponent{
       mobile : [ '', [ Validators.required ] ],
       userID : [ '', [ Validators.required ] ],
       city : [ '', [ Validators.required ] ],
-      passwordGroup : this.passwordGroup      
+      password : [ '', [ Validators.required, Validators.minLength(6) ]],
+      confirmPass : [ '', [ Validators.required ] ]    
+    },{
+      validator : MyValidator.passwordMatch('password', 'confirmPass')
     });
   }
   get f() { return this.registerForm.controls; }
