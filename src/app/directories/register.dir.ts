@@ -166,7 +166,7 @@ export class RegisterComponent{
       mobile : [ '', [ Validators.required ] ],
       userID : [ '', [ Validators.required ] ],
       city : [ '', [ Validators.required ] ],
-      password : [ '', [ Validators.required, Validators.minLength(6) ]],
+      password : [ '', [ Validators.required, Validators.minLength(6) ] ],
       confirmPass : [ '', [ Validators.required ] ]    
     },{
       validator : MyValidator.passwordMatch('password', 'confirmPass')

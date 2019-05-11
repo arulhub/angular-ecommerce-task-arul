@@ -220,14 +220,14 @@ export class BillingFormcomponent {
   }
   loadForm() {
     this.billingForm = this.fb.group({
-      firstName: ['', [ Validators.required ]],
-      lastName: ['', [ Validators.required ]],
-      eMail: ['', [ Validators.required, Validators.email ]],
+      firstName: ['', [ Validators.required ] ],
+      lastName: ['', [ Validators.required ] ],
+      eMail: ['', [ Validators.required, Validators.email ] ],
       mobile: ['', [ BillingFormValidation.required, BillingFormValidation.minLength(10) ] ],
-      address1: ['', [ Validators.required ]],
-      address2: ['', [ Validators.required ]],
-      state: ['', [ Validators.required ]],
-      city: ['', [ Validators.required ]],
+      address1: ['', [ Validators.required ] ],
+      address2: ['', [ Validators.required ] ],
+      state: ['', [ Validators.required ] ],
+      city: ['', [ Validators.required ] ],
       pin: ['', [ Validators.required, BillingFormValidation.minLength(6) ] ],
       paymentType: ['', [ Validators.required ] ]
     });
