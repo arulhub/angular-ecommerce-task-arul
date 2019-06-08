@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { Router } from '@angular/router';
 import { CartServices } from './../services/cart.service';
+import { BrowserStorageServices } from './../services/storage.service';
 
 @Component({
   selector: 'cart-app',
@@ -11,7 +12,7 @@ import { CartServices } from './../services/cart.service';
           <div class="modal-header bg-light">            
             <h5 class="modal-title">Your Cart Items</h5>              
             <div class="float-left">
-              <button class="btn btn-outline-danger btn-sm m-1" *ngIf="total > 0">Empty Cart</button>
+              <button class="btn btn-outline-danger btn-sm m-1" *ngIf="total > 0" (click)="emptyCart()">Empty Cart</button>
               <button class="btn btn-outline-info btn-sm m-1">Total Items <span class="badge badge-light">{{count}}</span>
 </button>
             </div>                    
@@ -75,7 +76,8 @@ export class CartComponent {
   public total : number = 0;   
   constructor(
     public cartService : CartServices,
-    public router : Router
+    public router : Router,
+    public storageService : BrowserStorageServices
   ){    
     this.load();
     this.count = Object.keys(this.cartDetails).length;
@@ -104,5 +106,8 @@ export class CartComponent {
   }
   route(){
     this.router.navigate(['/','billing']);
+  }
+  emptyCart(){
+    this.storageService.remove('cart');
   }
 }

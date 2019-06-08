@@ -11,7 +11,7 @@ export class CartServices {
   public products: any = {};
   constructor(
     public storage: BrowserStorageServices
-  ) {    
+  ) {
     this.load();
     this.loadProduct();
   }
@@ -21,7 +21,7 @@ export class CartServices {
     }    
   }
   load() {    
-    let temp = this.storage.get("cart");
+    let temp = this.storage.get('cart');
     if (temp == undefined || temp == '' || temp == null) {
       this.cartData = {};
     } else {
@@ -41,8 +41,7 @@ export class CartServices {
     this.storage.set({ cart: this.cartData });
   }
   viewCart() {    
-    let tempArray = [];
-    this.load();
+    let tempArray = [];    
     for (let key of Object.keys(this.cartData)) {      
       let jsonData = {};
       jsonData['id'] = this.products[key].uid;

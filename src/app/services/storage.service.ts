@@ -4,25 +4,23 @@ import { Injectable } from '@angular/core';
 
 export class BrowserStorageServices{
   public dbName : string = "myAppEC";
-  public data : any = {};
-  constructor(){
+  public data : any;
+  constructor(){    
     this.load();
   }
   load(){
-    let temp = localStorage.getItem(this.dbName);
-    if(temp != undefined || temp != null || temp != ''){
+    let temp = localStorage.getItem(this.dbName);    
+    if(temp == undefined || temp == null || temp == ''){
       this.data = {};
     }else{
       try{
         this.data = JSON.parse(temp);
       }catch(err){
-        console.log(err.message);
         this.data = {};
       }
     }
   }
-  get(key=''){    
-    //console.log('Key got = ', key, " and the value is ", this.data[key]);
+  get(key=''){           
     return key == '' ? this.data : this.data[key];
   }
   set(obj){
