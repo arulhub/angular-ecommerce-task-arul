@@ -9,7 +9,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
         Shoppee Kart
       </a>            
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" routerLink = "/products">Products <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">

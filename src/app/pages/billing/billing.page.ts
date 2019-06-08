@@ -3,23 +3,13 @@ import { BrowserStorageServices } from './../../services/storage.service';
 
 @Component({
   template : `
-    <div class="container">
-      <br>
-      <div class="row">
-        <div class="col-lg-12">
-          <navbar></navbar>
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-md-7">
-          <billing-form></billing-form>
-        </div>
-        <div class="col-md-5">
-          <cart-app></cart-app>
-        </div>
-      </div>
-    </div>      
+    <billing-layout>
+      <ng-container navbar>
+        <navbar></navbar>
+      </ng-container>
+      <billing-form></billing-form>
+      <cart-app></cart-app>
+    </billing-layout>    
   `
 })
 

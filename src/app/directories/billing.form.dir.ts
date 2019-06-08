@@ -102,10 +102,10 @@ import { BillingFormValidation } from './../validation/billing.validation';
             <div class="form-group col-md-4">
               <label for="state">State</label>
               <select class="form-control" id="state" formControlName="state">                
-                <option value="tn">Tamil Nadu</option>
-                <option value="kl">Kerala</option>
-                <option value="ka">Karnataka</option>
-                <option value="ap">Andhra Pradesh</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
               </select>
               <small
                 class="form-text text-danger"

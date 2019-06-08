@@ -42,6 +42,7 @@ export class CartServices {
   }
   viewCart() {    
     let tempArray = [];
+    this.load();
     for (let key of Object.keys(this.cartData)) {      
       let jsonData = {};
       jsonData['id'] = this.products[key].uid;

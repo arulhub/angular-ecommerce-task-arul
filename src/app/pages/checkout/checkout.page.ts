@@ -2,20 +2,14 @@ import { Component } from '@angular/core';
 
 @Component({
   template : `
-    <div class="container">
-    <br>
-      <div class="row">
-        <div class="col-lg-12">
-          <navbar
-            (checkoutFlag)="checkoutFlag=$event"
-          ></navbar>
-        </div>
-      </div>
-      <br>
+    <checkout-layout>
+      <ng-container navbar>
+        <navbar></navbar>
+      </ng-container>      
       <checkout-dir
         *ngIf="checkoutFlag"
       ></checkout-dir>
-    </div>
+    </checkout-layout>
   `
 })
 

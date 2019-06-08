@@ -29,8 +29,7 @@ import { CartServices } from './../services/cart.service';
                 </tr>
               </thead>
               <tbody>
-                <tr scope = "row" *ngFor = "let item of cartDetails;let i = index">
-                  <div *ngIf="item.qty >= 1">
+                <tr scope = "row" *ngFor = "let item of cartDetails;let i = index">                  
                     <th scope="row">{{i+1}} </th>
                     <td>{{item.name}}</td>
                     <td>{{item.price}}</td>
@@ -51,8 +50,7 @@ import { CartServices } from './../services/cart.service';
                         </div>
                       </div>
                     </td>
-                    <td>{{item.qty * item.price}}</td>
-                  </div>
+                    <td>{{item.qty * item.price}}</td>                  
                 </tr>                
               </tbody>
             </table></div>

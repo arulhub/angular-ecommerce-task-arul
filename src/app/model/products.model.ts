@@ -28,7 +28,7 @@ export const productsModel = [
     uid : 'product4'
   },
   {
-    image : 'https://www.bigbasket.com/media/uploads/p/l/263710-3_1-dabur-red-toothpaste.jpg',
+    image : 'https://masala-wala.com/wp-content/uploads/DBR-758-2-510x510.jpg',
     header : 'Dabur Toothpaste',
     quantity : '250gm',
     amount : 135,
